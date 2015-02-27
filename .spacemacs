@@ -122,7 +122,7 @@ This function is called at the very end of Spacemacs initialization."
     ("blackdog.local"
      (setq exec-path (cons "/opt/local/bin" exec-path)))
     ("gabr-bart-dev"
-     (message "hello gabr-bart-dev")))
+     (setq tern-command '("tern"))))
 
   ;; case insensitive completion
   (setq read-buffer-completion-ignore-case t)
