@@ -11,8 +11,16 @@
  dotspacemacs-configuration-layer-path '()
  ;; List of configuration layers to load.
  dotspacemacs-configuration-layers '(
+                                     c-c++
+                                     company-mode
+                                     extra-langs
                                      gbarta
+                                     git
+                                     haskell
+                                     html
                                      javascript
+                                     markdown
+                                     python
                                      )
  ;; A list of packages and/or extensions that will not be install and loaded.
  dotspacemacs-excluded-packages '()
@@ -28,7 +36,7 @@
  ;; the value is nil then no banner is displayed.
  dotspacemacs-startup-banner nil
  ;; Default theme applied at startup
- dotspacemacs-default-theme 'solarized-light
+ dotspacemacs-default-theme 'solarized-dark
  ;; The leader key
  dotspacemacs-leader-key "SPC"
  ;; Major mode leader key is a shortcut key which is the equivalent of
