@@ -13,6 +13,7 @@
  dotspacemacs-configuration-layers '(
                                      c-c++
                                      company-mode
+                                     csharp
                                      extra-langs
                                      gbarta
                                      git
@@ -36,7 +37,7 @@
  ;; the value is nil then no banner is displayed.
  dotspacemacs-startup-banner nil
  ;; Default theme applied at startup
- dotspacemacs-default-theme 'solarized-dark
+ dotspacemacs-themes '(solarized-dark)
  ;; The leader key
  dotspacemacs-leader-key "SPC"
  ;; Major mode leader key is a shortcut key which is the equivalent of
@@ -130,12 +131,19 @@ This function is called at the very end of Spacemacs initialization."
     ("blackdog.local"
      (setq exec-path (cons "/opt/local/bin" exec-path)))
     ("gabr-bart-dev"
+     (setq exec-path (cons "C:/Projects/netcode/omnisharp-server/OmniSharp/bin/Debug" exec-path))
      (setq tern-command '("tern"))))
 
   ;; case insensitive completion
   (setq read-buffer-completion-ignore-case t)
   (setq completion-ignore-case t)
   (setq read-file-name-completion-ignore-case t)
+
+  (setq default-tab-width 4)
+  (setq tab-width 4)
+
+  (setq whitespace-style '(tab-mark face trailing space-before-tab space-after-tab))
+  (global-whitespace-mode t)
 
   )
 
@@ -145,23 +153,24 @@ This function is called at the very end of Spacemacs initialization."
 ;; Do not write anything in this section. This is where Emacs will
 ;; auto-generate custom variable definitions.
 
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ac-ispell-requires 4)
  '(ahs-case-fold-search nil)
  '(ahs-default-range (quote ahs-range-whole-buffer))
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
- '(ring-bell-function (quote ignore) t)
- '(tab-width 4))
+ '(custom-safe-themes
+   (quote
+    ("bf3ec301ea82ab546efb39c2fdd4412d1188c7382ff3bbadd74a8ecae4121678" default)))
+ '(ring-bell-function (quote ignore) t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
