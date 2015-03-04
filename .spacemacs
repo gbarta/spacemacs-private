@@ -139,6 +139,7 @@ This function is called at the very end of Spacemacs initialization."
   (setq completion-ignore-case t)
   (setq read-file-name-completion-ignore-case t)
 
+  (setq-default indent-tabs-mode t)
   (setq default-tab-width 4)
   (setq tab-width 4)
 
