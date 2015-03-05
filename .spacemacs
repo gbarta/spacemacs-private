@@ -146,6 +146,14 @@ This function is called at the very end of Spacemacs initialization."
   (setq whitespace-style '(tab-mark face trailing space-before-tab space-after-tab))
   (global-whitespace-mode t)
 
+  ;; helm is pretty cool, but a bit jarring for ex-style commands
+  (eval-after-load 'evil-mode
+    (defadvice evil-ex (around evil-ex-use-standard-completion () activate)
+      (if (fboundp #'completion--in-region)
+          (let ((completion-in-region-function #'completion--in-region))
+            ad-do-it)
+        ad-do-it)))
+
   )
 
 ;; Custom variables
