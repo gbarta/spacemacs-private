@@ -169,6 +169,20 @@ This function is called at the very end of Spacemacs initialization."
   (setq whitespace-style '(tab-mark face trailing space-before-tab space-after-tab))
   (global-whitespace-mode t)
 
+  ;; backup policy -- always backup, but keep the
+  ;; files out of the way in .backups/
+  (setq
+   backup-by-copying t
+   backup-directory-alist '((".*" . ".backups"))
+   delete-old-versions t
+   kept-new-versions 100
+   make-backup-files t
+   vc-make-backup-files t
+   version-control t)
+  (defun gbarta/force-backup-of-buffer ()
+    (setq buffer-backed-up nil))
+  (add-hook 'before-save-hook  'gbarta/force-backup-of-buffer)
+
   ;; helm is pretty cool, but a bit jarring for ex-style commands
   (eval-after-load 'evil-mode
     (defadvice evil-ex (around evil-ex-use-standard-completion () activate)
