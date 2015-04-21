@@ -11,18 +11,20 @@
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers '(
-                                     c-c++
-                                     company-mode
-                                     csharp
-                                     extra-langs
-                                     gbarta
-                                     git
-                                     haskell
-                                     html
-                                     javascript
-                                     markdown
-                                     python
-                                     )
+                                       auto-completion
+                                       c-c++
+                                       csharp
+                                       extra-langs
+                                       gbarta
+                                       git
+                                       haskell
+                                       html
+                                       javascript
+                                       markdown
+                                       python
+                                       org
+                                       syntax-checking
+                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -42,7 +44,7 @@ before layers configuration."
    ;; `random' then the banner is chosen randomly among the available banners,
    ;; if the value is a string then it must be a path to a .PNG file,
    ;; if the value is nil then no banner is displayed.
-   dotspacemacs-startup-banner 'random
+   dotspacemacs-startup-banner 'doge
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
@@ -170,10 +172,10 @@ This function is called at the very end of Spacemacs initialization."
   (global-whitespace-mode t)
 
   ;; backup policy -- always backup, but keep the
-  ;; files out of the way in .backups/
+  ;; files out of the way in _backups/
   (setq
    backup-by-copying t
-   backup-directory-alist '((".*" . ".backups"))
+   backup-directory-alist '((".*" . "_backups"))
    delete-old-versions t
    kept-new-versions 100
    make-backup-files t
@@ -190,6 +192,12 @@ This function is called at the very end of Spacemacs initialization."
           (let ((completion-in-region-function #'completion--in-region))
             ad-do-it)
         ad-do-it)))
+
+  (defadvice evil-get-register (around evil-get-register-ex-fix () activate)
+    ;; getting the register should be done in the context
+    ;; of a real buffer, not the minibuffer
+    (with-current-buffer (or (and (evil-ex-p) evil-ex-current-buffer) (current-buffer))
+      ad-do-it))
 
   )
 
