@@ -157,6 +157,8 @@ This function is called at the very end of Spacemacs initialization."
      (setq exec-path (cons "/opt/local/bin" exec-path)))
     ("gabr-bart-dev"
      (setq exec-path (cons "C:/Projects/netcode/omnisharp-server/OmniSharp/bin/Debug" exec-path))
+     (setq exec-path (cons "/mybin/" exec-path))
+     (setq helm-ag-base-command "pt --nocolor --nogroup")
      (setq tern-command '("tern"))))
 
   ;; case insensitive completion
@@ -185,6 +187,9 @@ This function is called at the very end of Spacemacs initialization."
     (setq buffer-backed-up nil))
   (add-hook 'before-save-hook  'gbarta/force-backup-of-buffer)
 
+  ;; spacemacs has matchit but only turns it on for a few things
+  (global-evil-matchit-mode 1)
+
   ;; helm is pretty cool, but a bit jarring for ex-style commands
   (eval-after-load 'evil-mode
     (defadvice evil-ex (around evil-ex-use-standard-completion () activate)
@@ -200,6 +205,7 @@ This function is called at the very end of Spacemacs initialization."
       ad-do-it))
 
   )
+
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
