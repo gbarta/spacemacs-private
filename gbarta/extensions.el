@@ -3,16 +3,13 @@
 ;; This file is not part of GNU Emacs.
 ;;
 
-(defvar gbarta-pre-extensions
-  '(
-    )
-  "List of all extensions to load before the packages.")
+;; List of all extensions to load before the packages.
+(setq gbarta-pre-extensions
+      '())
 
-(defvar gbarta-post-extensions
-  '(
-    evil-noautochdir
-    )
-  "List of all extensions to load after the packages.")
+;; List of all extensions to load after the packages.
+(setq gbarta-post-extensions
+  '(evil-noautochdir))
 
 (defun gbarta/init-evil-noautochdir ()
   "Initialize my extension"

@@ -14,6 +14,7 @@
                                        auto-completion
                                        c-c++
                                        csharp
+                                       emacs-lisp
                                        extra-langs
                                        gbarta
                                        git
@@ -21,8 +22,9 @@
                                        html
                                        javascript
                                        markdown
-                                       python
                                        org
+                                       python
+                                       shell
                                        syntax-checking
                                        )
    ;; A list of packages and/or extensions that will not be install and loaded.
