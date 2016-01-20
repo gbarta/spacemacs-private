@@ -1,31 +1,16 @@
 ;;; packages.el --- gbarta Layer packages File for Spacemacs
-;;
-;; Copyright (c) 2012-2014 Sylvain Benner
-;; Copyright (c) 2014-2015 Sylvain Benner & Contributors
-;;
-;; Author: Sylvain Benner <sylvain.benner@gmail.com>
-;; URL: https://github.com/syl20bnr/spacemacs
-;;
-;; This file is not part of GNU Emacs.
-;;
-;;; License: GPLv3
 
 (defvar gbarta-packages
   '(
-    ;; package gbartas go here
-    )
-  "List of all packages to install and/or initialize. Built-in packages
-which require an initialization must be listed explicitly in the list.")
+    ob-ipython
+    (evil-noautochdir :location (recipe :fetcher github :repo "gbarta/evil-noautochdir"))
+    ))
 
 (defvar gbarta-excluded-packages '()
   "List of packages to exclude.")
 
-;; For each package, define a function gbarta/init-<package-gbarta>
-;;
-;; (defun gbarta/init-my-package ()
-;;   "Initialize my package"
-;;   )
-;;
-;; Often the body of an initialize function uses `use-package'
-;; For more info on `use-package', see readme:
-;; https://github.com/jwiegley/use-package
+(defun gbarta/init-evil-noautochdir ()
+    (use-package evil-noautochdir))
+
+(defun gbarta/init-ob-ipython ()
+  (use-package ob-ipython))
