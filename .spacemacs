@@ -23,6 +23,7 @@
                                        javascript
                                        markdown
                                        org
+                                       purescript
                                        python
                                        shell
                                        syntax-checking
